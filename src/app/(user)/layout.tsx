@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import '../../styles/globals.css';
 import Navbar from '@/components/Navbar';
+import 'slick-carousel/slick/slick.css';
 
 export const metadata: Metadata = {
   title: 'Orebi Shopping Store || Best place to shop',
