@@ -12,7 +12,7 @@ interface Props {
   bg?: string;
 }
 
-const Product = ({ product }: Props) => {
+const Product = ({ product, bg }: Props) => {
   return (
     <div
       className={
@@ -20,7 +20,7 @@ const Product = ({ product }: Props) => {
       }
     >
       <div className={'w-full h-80 flex items-center justify-center bg-white overflow-hidden'}>
-        <div className={'relative'}>
+        <div className={`relative ${bg}`}>
           <Link href={'/'}>
             <Image
               src={urlFor(product?.image).url()}
@@ -37,7 +37,6 @@ const Product = ({ product }: Props) => {
             }
           >
             <button
-              onClick={() => {}}
               className={
                 'bg-gray-800 text-gray-200 px-4 py-2 text-xs rounded-full flex items-center gap-1 hover:bg-gray-950 hover:text-white duration-200'
               }

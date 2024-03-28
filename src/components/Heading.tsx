@@ -1,7 +1,7 @@
 import React from 'react';
 
 interface Props {
-  heading: string;
+  heading?: string;
   className?: string;
 }
 

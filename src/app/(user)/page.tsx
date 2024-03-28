@@ -26,7 +26,7 @@ const specialOffersQuery = groq`*[_type == 'product' && position == 'Special Off
 const HomePage: FC = async () => {
   const banners = await client.fetch(bannerQuery);
   const newArrivalProducts = await client.fetch(newArrivalQuery);
-  const bestSellersProducts = await client.fetch(bestSellersQuery);
+  const bestSellersProducts = await client.fetch(newArrivalQuery);
   const specialOffersProducts = await client.fetch(specialOffersQuery);
 
   return (
@@ -34,7 +34,7 @@ const HomePage: FC = async () => {
       <Banner banners={banners} />
       <NewArrival products={newArrivalProducts} />
       <HomeBanner />
-      <BestSellers products={bestSellersProducts} />
+      <BestSellers products={bestSellersProducts} title={'Our Bestsellers'} />
     </main>
   );
 };
