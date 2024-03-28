@@ -3,7 +3,7 @@ import Banner from '@/components/Banner';
 import { groq } from 'next-sanity';
 import { client } from '@/lib/sanityClient';
 import NewArrival from '@/components/NewArrival';
-import newArrival from '@/components/NewArrival';
+import HomeBanner from '@/components/HomeBanner';
 
 export const revalidate = 10;
 const bannerQuery = groq`*[_type == 'banner']{
@@ -30,6 +30,7 @@ const HomePage: FC = async () => {
     <main className={'text-sm overflow-hidden min-h-screen'}>
       <Banner banners={banners} />
       <NewArrival products={newArrivalProducts} />
+      <HomeBanner />
     </main>
   );
 };
