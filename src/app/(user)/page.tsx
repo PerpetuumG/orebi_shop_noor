@@ -2,6 +2,8 @@ import React, { FC } from 'react';
 import Banner from '@/components/Banner';
 import { groq } from 'next-sanity';
 import { client } from '@/lib/sanityClient';
+import NewArrival from '@/components/NewArrival';
+import newArrival from '@/components/NewArrival';
 
 export const revalidate = 10;
 const bannerQuery = groq`*[_type == 'banner']{
@@ -22,10 +24,12 @@ const specialOffersQuery = groq`*[_type == 'product' && position == 'Special Off
 
 const HomePage: FC = async () => {
   const banners = await client.fetch(bannerQuery);
+  const newArrivalProducts = await client.fetch(newArrivalQuery);
 
   return (
     <main className={'text-sm overflow-hidden min-h-screen'}>
       <Banner banners={banners} />
+      <NewArrival products={newArrivalProducts} />
     </main>
   );
 };

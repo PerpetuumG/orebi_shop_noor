@@ -29,7 +29,7 @@ const PageButton: FC = () => {
       </Link>
 
       <Link
-        href={'/buy'}
+        href={'/cart'}
         className={
           'bg-white w-16 h-[70px] rounded-md flex flex-col gap-1 text-[#33475b] justify-center items-center shadow-textShadow overflow-x-hidden group cursor-pointer relative'
         }
