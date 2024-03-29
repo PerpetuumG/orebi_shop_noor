@@ -1717,6 +1717,14 @@
     "@portabletext/toolkit" "^2.0.13"
     "@portabletext/types" "^2.0.11"
 
+"@portabletext/react@^3.0.15":
+  version "3.0.15"
+  resolved "https://registry.yarnpkg.com/@portabletext/react/-/react-3.0.15.tgz#a267cc467a7c330a179e060a75763fb163715c46"
+  integrity sha512-M4Yag/C+1k9jnBs9n+ciDz2sP3vuvohxlX4CL3VFIlnDOsjzFmkPhWjOO4HUhOl+YE1VABJv/q8MW7PYaKS7SQ==
+  dependencies:
+    "@portabletext/toolkit" "^2.0.13"
+    "@portabletext/types" "^2.0.11"
+
 "@portabletext/toolkit@^2.0.13":
   version "2.0.13"
   resolved "https://registry.npmjs.org/@portabletext/toolkit/-/toolkit-2.0.13.tgz"

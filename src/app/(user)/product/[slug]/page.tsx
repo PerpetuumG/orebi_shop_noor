@@ -6,6 +6,8 @@ import OnSale from '@/components/OnSale';
 import Image from 'next/image';
 import { ProductProps } from '../../../../../type';
 import ProductInfo from '@/components/ProductInfo';
+import { PortableText } from '@portabletext/react';
+import { RichText } from '@/components/RichText';
 
 interface Props {
   params: {
@@ -66,6 +68,8 @@ const SinglePage = async ({ params: { slug } }: Props) => {
           <ProductInfo product={product} />
         </div>
       </div>
+
+      <PortableText value={product?.body} components={RichText} />
     </Container>
   );
 };
