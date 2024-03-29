@@ -1,8 +1,11 @@
 import React from 'react';
 import Container from '@/components/Container';
 import { groq } from 'next-sanity';
-import { client } from '@/lib/sanityClient';
+import { client, urlFor } from '@/lib/sanityClient';
 import OnSale from '@/components/OnSale';
+import Image from 'next/image';
+import { ProductProps } from '../../../../../type';
+import ProductInfo from '@/components/ProductInfo';
 
 interface Props {
   params: {
@@ -31,7 +34,7 @@ const SinglePage = async ({ params: { slug } }: Props) => {
   ...
   }`;
 
-  const product = await client.fetch(query, { slug });
+  const product: ProductProps = await client.fetch(query, { slug });
   const specialOffersProduct = await client.fetch(specialOffersQuery);
 
   return (
@@ -45,9 +48,23 @@ const SinglePage = async ({ params: { slug } }: Props) => {
           <OnSale products={specialOffersProduct} />
         </div>
 
-        <div></div>
+        <div className={'h-full xl:col-span-2'}>
+          <Image
+            src={urlFor(product?.image).url()}
+            alt={product?.title}
+            width={500}
+            height={500}
+            className={'w-full h-full object-contain'}
+          />
+        </div>
 
-        <div></div>
+        <div
+          className={
+            'w-full md:col-span-2 xl:col-span-3 xl:p-14 flex flex-col gap-6 justify-center'
+          }
+        >
+          <ProductInfo product={product} />
+        </div>
       </div>
     </Container>
   );
