@@ -18,21 +18,26 @@ const OnSale = ({ products }: Props) => {
 
       <div className={'flex flex-col gap-2 justify-start'}>
         {products?.map((item: ProductProps) => (
-          <Link href={`/product/${item?.slug?.current}`}>
-            <div>
-              <Image
-                src={urlFor(item?.image).url()}
-                alt={item?.title}
-                width={200}
-                height={200}
-                className={'w-24 object-contain'}
-              />
-              <div>
-                <p>{item?.title.substring(0, 7)}</p>
-                <p>
-                  <Price amount={item?.price} className={''} />
-                </p>
-              </div>
+          <Link
+            href={`/product/${item?.slug?.current}`}
+            key={item._id}
+            className={'flex items-center gap-4 border-b-[1px] border-b-gray-300 py-2'}
+          >
+            <Image
+              src={urlFor(item?.image).url()}
+              alt={item?.title}
+              width={200}
+              height={200}
+              className={'w-24 object-contain'}
+            />
+
+            <div className={'flex flex-col gap-2'}>
+              <p className={'text-sm tracking-tighter font-medium'}>
+                {item?.title.substring(0, 7)}
+              </p>
+              <p className={'text-sm font-semibold'}>
+                <Price amount={item?.price} className={''} />
+              </p>
             </div>
           </Link>
         ))}
