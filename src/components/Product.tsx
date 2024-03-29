@@ -21,7 +21,7 @@ const Product = ({ product, bg }: Props) => {
     >
       <div className={'w-full h-80 flex items-center justify-center bg-white overflow-hidden'}>
         <div className={`relative ${bg}`}>
-          <Link href={`/product/${product?.slug?.current}`}>
+          <Link href={`/product/${product?.slug?.current}`} key={product?._id}>
             <Image
               src={urlFor(product?.image).url()}
               alt={product?.title}

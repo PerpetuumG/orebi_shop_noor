@@ -20,7 +20,7 @@ const OnSale = ({ products }: Props) => {
         {products?.map((item: ProductProps) => (
           <Link
             href={`/product/${item?.slug?.current}`}
-            key={item._id}
+            key={item?._id}
             className={'flex items-center gap-4 border-b-[1px] border-b-gray-300 py-2'}
           >
             <Image
