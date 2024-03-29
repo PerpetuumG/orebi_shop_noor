@@ -1,12 +1,12 @@
 'use client';
 import Slider from 'react-slick';
 
-import React, { FC, useState } from 'react';
+import React, { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { urlFor } from '@/lib/sanityClient';
 
-const Banner: FC = ({ banners }: any) => {
+const Banner = ({ banners }: any) => {
   const [dotActive, setDotActive] = useState(0);
   const settings = {
     dots: true,
