@@ -111,7 +111,7 @@ const Banner = ({ banners }: any) => {
     <div>
       <Slider {...settings}>
         {banners?.map((item: any) => (
-          <Link href={'/shop'} key={item.key} className={'relative'}>
+          <Link href={'/shop'} key={item?._id} className={'relative'}>
             <Image
               src={urlFor(item.image).url()}
               alt={'banner image'}

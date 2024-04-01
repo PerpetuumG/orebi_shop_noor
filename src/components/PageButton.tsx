@@ -1,9 +1,15 @@
+'use client';
+
 import React, { FC } from 'react';
 import { RiShoppingCart2Fill } from 'react-icons/ri';
 import { MdSwitchAccount } from 'react-icons/md';
 import Link from 'next/link';
+import { useSelector } from 'react-redux';
+import { StateProps } from '../../type';
 
 const PageButton: FC = () => {
+  const { productData } = useSelector((state: StateProps) => state.orebi);
+
   return (
     <div className={'fixed top-60 right-2 z-20 flex flex-col gap-2'}>
       <Link
@@ -53,7 +59,7 @@ const PageButton: FC = () => {
             'absolute top-1 right-2 bg-primeColor text-white text-xs w-4 h-4 rounded-full flex items-center justify-center font-semibold'
           }
         >
-          0
+          {productData ? productData?.length : 0}
         </p>
       </Link>
     </div>
