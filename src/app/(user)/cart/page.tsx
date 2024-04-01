@@ -1,9 +1,10 @@
-import React, {FC} from 'react';
+import React from 'react';
+import Cart from "@/components/Cart";
 
-const CartPage: FC = () => {
+const CartPage = () => {
     return (
         <div>
-            Cart Page
+            <Cart/>
         </div>
     );
 };
