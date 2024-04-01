@@ -9,10 +9,12 @@ import { FaSearch } from 'react-icons/fa';
 import { IoCloseOutline } from 'react-icons/io5';
 import { HiMenuAlt2 } from 'react-icons/hi';
 import logo from '@/assets/logoBlack.png';
+import { signOut, useSession } from 'next-auth/react';
 
 const Navbar: FC = () => {
   const pathname = usePathname();
   const [searchQuery, setSearchQuery] = useState('');
+  const { data: session } = useSession();
 
   const navBarList = [
     { title: 'Home', link: '/' },
@@ -67,6 +69,17 @@ const Navbar: FC = () => {
               {item?.title}
             </Link>
           ))}
+
+          {session?.user && (
+            <button
+              onClick={() => signOut()}
+              className={
+                'flex hover:font-medium w-20 h-6 justify-center items-center px-12 text-gray-500 hover:underline underline-offset-4 decoration-[1px] hover:text-red-600 md:border-r-[2px] border-r-gray-300 duration-200 last:border-r-0'
+              }
+            >
+              Logout
+            </button>
+          )}
         </div>
 
         <HiMenuAlt2 className={'inline-flex md:hidden cursor-pointer w-8 h-6'} />
