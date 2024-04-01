@@ -1,3 +1,5 @@
+'use client';
+
 import React from 'react';
 import { ProductProps } from '../../type';
 import Link from 'next/link';
@@ -6,6 +8,9 @@ import { urlFor } from '@/lib/sanityClient';
 import { AiOutlineShopping } from 'react-icons/ai';
 import { MdOutlineStarPurple500 } from 'react-icons/md';
 import { BsArrowsFullscreen } from 'react-icons/bs';
+import { useDispatch } from 'react-redux';
+import { addToCart } from '@/redux/orebiSlice';
+import toast, { Toaster } from 'react-hot-toast';
 
 interface Props {
   product: ProductProps;
@@ -13,6 +18,8 @@ interface Props {
 }
 
 const Product = ({ product, bg }: Props) => {
+  const dispatch = useDispatch();
+
   return (
     <div
       className={
@@ -37,6 +44,10 @@ const Product = ({ product, bg }: Props) => {
             }
           >
             <button
+              onClick={() => {
+                dispatch(addToCart(product));
+                toast.success(`${product?.title?.substring(0, 12)}... added to cart`);
+              }}
               className={
                 'bg-gray-800 text-gray-200 px-4 py-2 text-xs rounded-full flex items-center gap-1 hover:bg-gray-950 hover:text-white duration-200'
               }
@@ -48,7 +59,7 @@ const Product = ({ product, bg }: Props) => {
             </button>
 
             <Link
-              href={'/'}
+              href={`/product/${product?.slug?.current}`}
               className={
                 'bg-gray-800 text-gray-200 px-4 py-2 text-xs rounded-full flex items-center gap-1 hover:bg-gray-950 hover:text-white duration-200'
               }
@@ -95,6 +106,16 @@ const Product = ({ product, bg }: Props) => {
           </div>
         </div>
       </div>
+
+      <Toaster
+        position={'bottom-right'}
+        toastOptions={{
+          style: {
+            background: '#000',
+            color: '#fff',
+          },
+        }}
+      />
     </div>
   );
 };
